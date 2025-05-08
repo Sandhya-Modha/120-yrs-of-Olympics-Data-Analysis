@@ -132,3 +132,5 @@ streamlit
 plotly
 seaborn
 matplotlib
+setuptools>=42
+wheel
