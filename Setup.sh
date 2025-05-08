@@ -1,16 +1,18 @@
+#!/bin/bash
+
+# Make the .streamlit directory
 mkdir -p ~/.streamlit/
 
+# Create the config.toml file with necessary settings
 echo "\
-[server]\n\
-port = $PORT\n\
-enableCORS = false\n\
-headless = true\n\
-\n\
+[server]
+port = \$PORT
+enableCORS = false
+headless = true
 " > ~/.streamlit/config.toml
-#!/bin/bash
 
 # Upgrade pip to avoid build issues
 pip install --upgrade pip
 
-# Install build tools
+# Install build tools required for many Python packages
 pip install setuptools wheel
