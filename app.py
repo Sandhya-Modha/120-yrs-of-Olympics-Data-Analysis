@@ -10,10 +10,14 @@ import plotly.figure_factory as ff
 import preprocessor,helper
 from helper import most_successful
 
-df = pd.read_csv('athlete_events.csv')
-regions_df = pd.read_csv('noc_regions.csv')
+@st.cache_data
+def load_data():
+    df = pd.read_csv('athlete_events.csv')
+    regions_df = pd.read_csv('noc_regions.csv')
+    df = preprocessor.preprocess(df, regions_df)
+    return df, regions_df
 
-df = preprocessor.preprocess(df,regions_df)
+df, regions_df = load_data()
 
 st.sidebar.title('120 Years Of Olympics Data Analysis')
 st.sidebar.image('https://th.bing.com/th/id/OIP.GuVnTPFoeSDsU9CScE-oxAHaDt?rs=1&pid=ImgDetMain')
@@ -117,7 +121,7 @@ elif user_menu == 'Country-wise Analysis':
 
     st.title(selected_country + " Excels In The Following Sports")
     pt = helper.country_event_heatmap(df,selected_country)
-    fig, ax = plt.subplots(figsize=(20, 20))
+    fig, ax = plt.subplots(figsize=(12,12))
     ax = sns.heatmap(pt,annot= True)
     st.pyplot(fig)
 
