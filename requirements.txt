@@ -3,3 +3,5 @@ plotly
 seaborn
 matplotlib
 docutils
+scikit-learn
+nltk
