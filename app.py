@@ -19,7 +19,6 @@ def load_data():
 
 with st.spinner("Loading and processing data... Please wait ⏳"):
     df, regions_df = load_data()
-st.success("Data loaded successfully ✅")
 
 st.sidebar.title('120 Years Of Olympics Data Analysis')
 st.sidebar.image('https://th.bing.com/th/id/OIP.GuVnTPFoeSDsU9CScE-oxAHaDt?rs=1&pid=ImgDetMain')
@@ -94,7 +93,7 @@ elif user_menu == 'Overall Analysis':
     st.plotly_chart(fig)
 
     st.title("No. of Events Overtime (Every Sport)")
-    fig,ax = plt.subplots(figsize = (20,20))
+    fig,ax = plt.subplots(figsize = (12,12))
     x = df.drop_duplicates(['Year', 'Sport', 'Event'])
     ax = sns.heatmap(x.pivot_table(index='Sport', columns='Year', values='Event', aggfunc='count').fillna(0).astype('int'),annot= True)
     st.pyplot(fig)
