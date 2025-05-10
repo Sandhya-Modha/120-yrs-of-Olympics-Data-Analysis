@@ -17,7 +17,9 @@ def load_data():
     df = preprocessor.preprocess(df, regions_df)
     return df, regions_df
 
-df, regions_df = load_data()
+with st.spinner("Loading and processing data... Please wait ⏳"):
+    df, regions_df = load_data()
+st.success("Data loaded successfully ✅")
 
 st.sidebar.title('120 Years Of Olympics Data Analysis')
 st.sidebar.image('https://th.bing.com/th/id/OIP.GuVnTPFoeSDsU9CScE-oxAHaDt?rs=1&pid=ImgDetMain')
