@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-from docutils.nodes import figure
-from nltk.sem.chat80 import country
+
 import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
